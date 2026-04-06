@@ -25,7 +25,7 @@ const TILE_TRANSITION = {
   stiffness: 675,
   damping: 75,
   mass: 1,
-};
+} as const; // Added 'as const' to fix the Type Error
 
 const TranscriptMotion = motion.create(Transcript);
 
@@ -99,7 +99,7 @@ export const PopupView = ({
 
         onEmbedError({
           title: 'Session ended',
-          description: <p className="w-full">{reason}</p>,
+          description: <div className="w-full">{reason}</div>,
         });
       }
     }, 10_000);
@@ -205,7 +205,7 @@ export const PopupView = ({
         <AnimatePresence>
           {agentVideoTrack && chatOpen && (
             <motion.div
-              key="audio-visualizer"
+              key="audio-visualizer-tile"
               initial={{
                 opacity: 0,
                 scale: 0.5,
