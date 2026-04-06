@@ -14,7 +14,8 @@ export function ChatInput({ onSend, className, disabled, ...props }: ChatInputPr
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    props.onSubmit?.(e);
+    // Use 'as any' to bypass the SubmitEvent type mismatch in Next.js 15
+    props.onSubmit?.(e as any);
     onSend?.(message);
     setMessage('');
   };
